@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.O.D.E GOL - Tienda de Camisetas de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Swiper CSS para carrusel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="shortcut icon" href="img/logo.png">
+</head>
+
+<body>
+
+<header>
+    <div class="logo" onclick="mostrarInicio()">
+        <!-- AQUÍ VA EL LOGO - Reemplazar 'img/logo.png' con la ruta de tu imagen -->
+        <img src="img/logo.png" alt="C.O.D.E GOL Logo" id="logo-img">
+        <span>C.O.D.E GOL</span>
+    </div>
+    <div class="nav-icons">
+        <a href="#" onclick="mostrar('ligas')">
+            <i class="fas fa-trophy"></i> Ligas
+        </a>
+        <a href="#" onclick="mostrar('login')">
+            <i class="fas fa-user"></i> Login
+        </a>
+        <a href="#" class="btn-carrito" onclick="mostrar('carrito')">
+            <i class="fas fa-shopping-cart"></i> Carrito
+            <span id="carrito-count" class="carrito-count">0</span>
+        </a>
+    </div>
+</header>
+
+<nav class="menu">
+    <a href="#" onclick="mostrarCategoria('Hombre')">
+        <i class="fas fa-mars"></i> HOMBRE
+    </a>
+    <a href="#" onclick="mostrarCategoria('Dama')">
+        <i class="fas fa-venus"></i> DAMA
+    </a>
+    <a href="#" onclick="mostrarCategoria('Niño')">
+        <i class="fas fa-child"></i> NIÑO
+    </a>
+    <a href="#" onclick="mostrarCategoria('Niña')">
+        <i class="fas fa-female"></i> NIÑA
+    </a>
+</nav>
+
+<!-- BOTÓN VOLVER ATRÁS (visible en todas las secciones excepto inicio) -->
+<button id="btnVolver" class="btn-volver" onclick="volverAtras()" style="display: none;">
+    <i class="fas fa-arrow-left"></i> Volver
+</button>
+
+<!-- PÁGINA PRINCIPAL (INICIO) -->
+<section id="inicio" class="section">
+    <!-- Carrusel de Lo Nuevo -->
+    <div class="carrusel-container">
+        <h2><i class="fas fa-star"></i> LO NUEVO</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- AQUÍ VAN LAS IMÁGENES DEL CARRUSEL - Reemplazar las URLs -->
+                <div class="swiper-slide">
+                    <img src="img/carrusel1.png" alt="Nueva colección 2026">
+                    <div class="carrusel-texto">
+                        <h3>Nueva Colección 2026</h3>
+                        <p>Camisetas oficiales de los mejores equipos</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/carrusel2.jpg" alt="Edición limitada">
+                    <div class="carrusel-texto">
+                        <h3>Edición Limitada</h3>
+                        <p>Diseños exclusivos para verdaderos fans</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/carrusel3.jpg" alt="Pre-temporada">
+                    <div class="carrusel-texto">
+                        <h3>Pre-temporada 2026/25</h3>
+                        <p>Reserva tu camiseta ahora</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!-- Sección de Promociones -->
+    <div class="promociones-container">
+        <h2><i class="fas fa-tag"></i> PROMOCIONES</h2>
+        <div class="grid-promos">
+            <!-- AQUÍ VAN LAS IMÁGENES DE PROMOCIONES -->
+            <div class="promo-card" onclick="mostrarProductos('Real Madrid')">
+                <img src="img/promo1.jpg" alt="Promo Real Madrid">
+                <div class="promo-info">
+                    <h3>Real Madrid</h3>
+                    <p>20% OFF en camisetas locales</p>
+                    <span class="precio-promo">Desde $259.900</span>
+                </div>
+            </div>
+            <div class="promo-card" onclick="mostrarProductos('Barcelona')">
+                <img src="img/promo2.jpg" alt="Promo Barcelona">
+                <div class="promo-info">
+                    <h3>FC Barcelona</h3>
+                    <p>Envio gratis + 15% OFF</p>
+                    <span class="precio-promo">Desde $279.900</span>
+                </div>
+            </div>
+            <div class="promo-card" onclick="mostrarProductos('Manchester United')">
+                <img src="img/unitedlocal.jpg" alt="Promo United">
+                <div class="promo-info">
+                    <h3>United</h3>
+                    <p>3x2 en accesorios</p>
+                    <span class="precio-promo">Desde $249.900</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LIGAS -->
+<section id="ligas" class="section hidden">
+    <h2><i class="fas fa-trophy"></i> Ligas de Fútbol</h2>
+    <div class="grid">
+        <div class="card" onclick="mostrarEquiposPorLiga('Premier League')">
+            <!-- AQUÍ VA LA IMAGEN DE PREMIER LEAGUE -->
+            <img src="img/premier.png" alt="Premier League">
+            <h3><i class="fas fa-futbol"></i> Premier League</h3>
+        </div>
+        <div class="card" onclick="mostrarEquiposPorLiga('La Liga')">
+            <!-- AQUÍ VA LA IMAGEN DE LA LIGA -->
+            <img src="img/laliga.png" alt="La Liga">
+            <h3><i class="fas fa-futbol"></i> La Liga</h3>
+        </div>
+        <div class="card" onclick="mostrarEquiposPorLiga('Serie A')">
+            <!-- AQUÍ VA LA IMAGEN DE SERIE A -->
+            <img src="img/seriea.png" alt="Serie A">
+            <h3><i class="fas fa-futbol"></i> Serie A</h3>
+        </div>
+        <div class="card" onclick="mostrarEquiposPorLiga('Bundesliga')">
+            <!-- AQUÍ VA LA IMAGEN DE BUNDESLIGA -->
+            <img src="img/bundesliga.png" alt="Bundesliga">
+            <h3><i class="fas fa-futbol"></i> Bundesliga</h3>
+        </div>
+        <div class="card" onclick="mostrarEquiposPorLiga('Ligue 1')">
+            <!-- AQUÍ VA LA IMAGEN DE LIGUE 1 -->
+            <img src="img/ligue1.png" alt="Ligue 1">
+            <h3><i class="fas fa-futbol"></i> Ligue 1</h3>
+        </div>
+        <div class="card" onclick="mostrarEquiposPorLiga('Liga Colombiana')">
+            <!-- AQUÍ VA LA IMAGEN DE LIGA COLOMBIANA -->
+            <img src="img/ligacolombiana.png" alt="Liga Colombiana">
+            <h3><i class="fas fa-futbol"></i> Liga Colombiana</h3>
+        </div>
+        <div class="card" onclick="mostrarEquiposPorLiga('Selecciones')">
+            <!-- AQUÍ VA LA IMAGEN DE SELECCIONES -->
+            <img src="img/selecciones.png" alt="Selecciones">
+            <h3><i class="fas fa-flag"></i> Selecciones</h3>
+        </div>
+    </div>
+</section>
+
+<!-- LOGIN -->
+<section id="login" class="section hidden">
+    <div class="login-box">
+        <h2><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</h2>
+        <input type="email" id="login-email" placeholder="📧 Email">
+        <input type="password" id="login-password" placeholder="🔒 Contraseña">
+        <button onclick="iniciarSesion()"><i class="fas fa-arrow-right"></i> Ingresar</button>
+        <p class="login-register">¿No tienes cuenta? <a href="#" onclick="mostrarRegistro()">Regístrate</a></p>
+    </div>
+</section>
+
+<!-- REGISTRO -->
+<section id="registro" class="section hidden">
+    <div class="login-box">
+        <h2><i class="fas fa-user-plus"></i> Registrarse</h2>
+        <input type="text" id="reg-nombre" placeholder="👤 Nombre completo">
+        <input type="email" id="reg-email" placeholder="📧 Email">
+        <input type="password" id="reg-password" placeholder="🔒 Contraseña">
+        <input type="password" id="reg-confirm" placeholder="🔒 Confirmar contraseña">
+        <button onclick="registrarUsuario()"><i class="fas fa-check"></i> Registrarse</button>
+        <p class="login-register">¿Ya tienes cuenta? <a href="#" onclick="mostrar('login')">Inicia Sesión</a></p>
+    </div>
+</section>
+
+<!-- CARRITO -->
+<section id="carrito" class="section hidden">
+    <h2><i class="fas fa-shopping-cart"></i> Carrito de Compras</h2>
+    <div id="carrito-contenido">
+        <p><i class="fas fa-box-open"></i> Tu carrito está vacío</p>
+    </div>
+</section>
+
+<!-- CATEGORIA / EQUIPOS -->
+<section id="categoria" class="section hidden">
+    <h2 id="tituloCategoria"></h2>
+    <div class="grid" id="equipos-grid">
+        <!-- Los equipos se cargarán dinámicamente -->
+    </div>
+</section>
+
+<!-- PRODUCTOS / DETALLE DE PRODUCTO -->
+<section id="productos" class="section hidden">
+    <h2 id="tituloEquipo"></h2>
+    <div class="grid" id="productos-grid">
+        <!-- Los productos se cargarán dinámicamente -->
+    </div>
+</section>
+
+<!-- MODAL DETALLE PRODUCTO -->
+<div id="modalDetalle" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <div id="modal-detalle-contenido"></div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3><i class="fas fa-futbol"></i> C.O.D.E GOL</h3>
+            <p>Tu tienda de confianza para camisetas de fútbol oficiales de los mejores equipos del mundo.</p>
+            <div class="footer-icons">
+                <i class="fas fa-map-marker-alt"></i>
+                <i class="fas fa-trophy"></i>
+                <i class="fas fa-medal"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3><i class="fas fa-envelope"></i> Contacto</h3>
+            <p><i class="fas fa-envelope"></i> info@codegol.com</p>
+            <p><i class="fas fa-phone"></i> +57 (601) 123-4567</p>
+            <p><i class="fas fa-map-marker-alt"></i> Cra. 10 # 20-30, Bogotá, Colombia</p>
+        </div>
+
+        <div class="footer-section">
+            <h3><i class="fas fa-link"></i> Enlaces Rápidos</h3>
+            <ul>
+                <li><a href="#"><i class="fas fa-info-circle"></i> Sobre Nosotros</a></li>
+                <li><a href="#"><i class="fas fa-truck"></i> Política de Envíos</a></li>
+                <li><a href="#"><i class="fas fa-undo"></i> Política de Devoluciones</a></li>
+                <li><a href="#"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3><i class="fas fa-share-alt"></i> Síguenos</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 C.O.D.E GOL - Todos los derechos reservados</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
